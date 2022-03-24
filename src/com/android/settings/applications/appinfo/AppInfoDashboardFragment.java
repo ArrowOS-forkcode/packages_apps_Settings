@@ -401,6 +401,12 @@ public class AppInfoDashboardFragment extends DashboardFragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
+        Context mContext = getContext();
+        if (com.android.internal.util.custom.CustomUtils.isPackageInstalled(mContext,"com.android.vending")) {
+            menu.add(0, PLAY_STORE, 0, R.string.app_play_store)
+                    .setIcon(R.drawable.ic_menu_play_store)
+                    .setShowAsAction(MenuItem.SHOW_AS_ACTION_ALWAYS);
+        }
         menu.add(0, UNINSTALL_UPDATES, 0, R.string.app_factory_reset)
                 .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
         menu.add(0, UNINSTALL_ALL_USERS_MENU, 1, R.string.uninstall_all_users_text)
@@ -436,6 +442,15 @@ public class AppInfoDashboardFragment extends DashboardFragment
             RestrictedLockUtilsInternal.setMenuItemAsDisabledByAdmin(getActivity(),
                     uninstallUpdatesItem, mAppsControlDisallowedAdmin);
         }
+<<<<<<< HEAD
+=======
+        // Utils.isSystemPackage doesn't include all aosp built apps, like Contacts etc. Add them
+        // and grab the Google Play Store itself (com.android.vending) in the process
+        Context mContext = getContext();
+        if (com.android.internal.util.custom.CustomUtils.isPackageInstalled(mContext,"com.android.vending"))
+            menu.findItem(PLAY_STORE).setVisible(!Utils.isSystemPackage(getContext().getResources(), mPm, mPackageInfo)
+                    && !isAospOrStore(mAppEntry.info.packageName));
+>>>>>>> 932e20e9ed (Settings: Introduce app lock [2/3])
     }
 
     /** Shows the lock screen if the keyguard is secured. */
