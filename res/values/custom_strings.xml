@@ -61,6 +61,10 @@
     <string name="hide_navbar_gesture_bar_title">Hide gesture bar</string>
     <string name="hide_navbar_gesture_bar_summary">Hide the gesture bar at the bottom of the screen</string>
 
+    <!-- Hide developer status -->
+    <string name="hide_developer_status_title">Hide developer status</string>
+    <string name="hide_developer_status_summary">Hide developer status from apps</string>
+
     <!-- Black theme -->
     <string name="system_black_theme_title">Use Black theme</string>
     <string name="system_black_theme_summary">Force black background colors</string>
